@@ -29,7 +29,7 @@ export async function adapterArgs(agent: Agent, args: string[], dir: string, hoo
     const notify = config.notify;
     if (notify !== undefined && (!Array.isArray(notify) || !notify.every(v => typeof v === 'string'))) throw new Error('Existing Codex notify must be an array of strings.');
     const command = [process.execPath, hookPath, 'codex-native'].map(quote).join(' ');
-    const trust: TOML.JsonMap = { ...((config.hooks as TOML.JsonMap | undefined)?.state as TOML.JsonMap || {}) };
+    const trust: TOML.JsonMap = { ...((config.hooks as TOML.JsonMap | undefined)?.state as TOML.JsonMap | undefined) };
     const native = CODEX_EVENTS.flatMap(event => {
       const existing = (config.hooks as TOML.JsonMap | undefined)?.[event];
       if (existing !== undefined && !Array.isArray(existing)) throw new Error('Invalid existing Codex hooks.');

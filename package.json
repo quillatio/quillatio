@@ -11,22 +11,24 @@
     "README.md"
   ],
   "engines": {
-    "node": ">=22"
+    "node": ">=22.18.0"
   },
   "scripts": {
     "build": "tsup src/cli.ts src/hook.ts --format esm --clean",
     "typecheck": "tsc --noEmit",
     "test": "npm run build && vitest run tests/",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "lint": "oxlint --deny-warnings src tests"
   },
   "dependencies": {
     "@iarna/toml": "^2.2.5",
-    "commander": "^14.0.0"
+    "commander": "^15.0.0"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0",
-    "tsup": "^8.5.0",
-    "typescript": "^5.9.0",
+    "@types/node": "^26.6.5",
+    "oxlint": "^1.90.0",
+    "tsup": "^9.0.0",
+    "typescript": "^7.0.2",
     "vitest": "^5.0.5"
   },
   "overrides": {
