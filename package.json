@@ -1,0 +1,35 @@
+{
+  "name": "quillatio",
+  "version": "0.1.0",
+  "description": "Opt-in coding agent recording to managed Laminar",
+  "type": "module",
+  "bin": {
+    "quillatio": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsup src/cli.ts src/hook.ts --format esm --clean",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && vitest run tests/",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "@iarna/toml": "^2.2.5",
+    "commander": "^14.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.0",
+    "vitest": "^5.0.5"
+  },
+  "overrides": {
+    "esbuild": "^0.28.2"
+  }
+}
